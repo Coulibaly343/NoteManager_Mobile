@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NoteManager.LoginPage">
+    <ContentPage.Content>
+        <StackLayout x:Name="MainStack">
+            <Label Text="SafeNotes" FontSize="Large" HorizontalOptions="Center"
+            />
+            <Entry x:Name="loginEntry" Placeholder="Login" />
+            <Entry x:Name="passwordEntry" Placeholder="Password" IsPassword="true" />
+            <Button Text="Submit" x:Name="submitBtn" Clicked="Submit_Btn_Clicked" />
+            <Button Text="Register" x:Name="registerBtn" Clicked="Register_Btn_Clicked" />
+            <Label x:Name="connectionCheck" HorizontalOptions="Center" FontSize="Small" />
+        </StackLayout>
+</ContentPage.Content>
+</ContentPage>

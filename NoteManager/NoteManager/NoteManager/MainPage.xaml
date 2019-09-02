@@ -1,14 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:NoteManager"
              x:Class="NoteManager.MainPage">
-
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-    </StackLayout>
-
+    <ContentPage.Content>
+        <ListView x:Name="NotesList" ItemsSource="
+            {Binding Source={x:Reference ContentPage},
+            Path=BindingContext.Notes}" IsVisible="True">
+            <ListView.Header>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                    <Button Text="Add Note" Clicked="Add_Btn_Clicked" />
+                </StackLayout>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="Delete" Clicked="MenuItem_Delete" CommandParameter="{Binding .}" />
+                            <MenuItem Text="Update" Clicked="MenuItemUpdate_Clicked" CommandParameter="{Binding .}" />
+                        </ViewCell.ContextActions>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding Title}" />
+                            <Label Text="{Binding Content}"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+</ContentPage.Content>
 </ContentPage>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NoteManager.Db;
+using System;
+using System.IO;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -7,6 +9,21 @@ namespace NoteManager
 {
     public partial class App : Application
     {
+        private static NoteManagerContext _database;
+
+        public static NoteManagerContext Database
+        {
+            get
+            {
+                if (_database == null)
+                {
+                    _database = new NoteManagerContext(
+                        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "NoteSQLite.db3"));
+                }
+                return _database;
+            }
+        }
+
         public App()
         {
             InitializeComponent();
